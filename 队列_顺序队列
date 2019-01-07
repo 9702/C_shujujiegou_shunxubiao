@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include<stdlib.h>
+#define size 4
+int enQueue(int *a, int rear, int data) {
+	a[rear++] = data;
+	return rear;
+}
+void deQueue(int *a, int front, int rear) {
+	//如果 front==rear，表示队列为空
+	while (front != rear) {
+		printf("出队元素：%d\n", a[front++]);
+	}
+}
+int main() {
+	system("title");
+	int inter;
+	int a[100];
+	int front, rear;
+	//设置队头指针和队尾指针，当队列中没有元素时，队头和队尾指向同一块地址
+	front = rear = 0;
+	//入队
+	for (int i = 0; i < size; i++)
+	{
+		printf("the num of %d:",i+1);
+		scanf_s("%d",&inter);
+		rear = enQueue(a, rear, inter);
+	}
+	//出队
+	deQueue(a, front, rear);
+	system("pause");
+	return 0;
+}
