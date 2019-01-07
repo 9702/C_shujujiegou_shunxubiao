@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+//元素elem进栈
+int push(int* a, int top, int elem) {
+	a[++top] = elem;
+	return top;
+}
+//数据元素出栈
+int pop(int * a, int top) {
+	if (top == -1) {
+		printf("空栈\n");
+		return -1;
+	}
+	printf("弹栈元素：%d\n", a[top--]);
+	return top;
+}
+int main() {
+	system("title");
+	int a[100];
+	int top = -1;
+	printf("入栈操作：\n");
+	for (int i = 0; i < 4; i++)
+	{
+		top = push(a,top,i);
+	}/*
+	top = push(a, top, 1);
+	top = push(a, top, 2);
+	top = push(a, top, 3);
+	top = push(a, top, 4);*/
+	for (int i = 0; i < 4; i++)
+	{
+		top = pop(a, top);
+	}
+	printf("栈中的元素：\n");
+	for (int i = 0; i < 4; i++)
+	{
+		printf("%d ",a[i]);
+	}
+	printf("\n");
+	/*
+	top = pop(a, top);
+	top = pop(a, top);
+	top = pop(a, top);
+	top = pop(a, top);
+	top = pop(a, top);*/
+	system("pause");
+	return 0;
+}
