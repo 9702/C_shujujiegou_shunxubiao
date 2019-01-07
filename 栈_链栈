@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define size 4
+
+typedef struct lineStack {
+	int data;
+	struct lineStack * next;
+}lineStack;
+lineStack* push(lineStack * stack, int a) {
+	lineStack * line = (lineStack*)malloc(sizeof(lineStack));
+	line->data = a;
+	line->next = stack;
+	stack = line;
+	return stack;
+}
+lineStack * pop(lineStack * stack) {
+	if (stack) {
+		lineStack * p = stack;
+		stack = stack->next;
+		printf("弹栈元素：%d ", p->data);
+		if (stack) {
+			printf("栈顶元素：%d\n", stack->data);
+		}
+		else {
+			printf("栈已空\n");
+		}
+		free(p);
+	}
+	else {
+		printf("栈内没有元素");
+		return stack;
+	}
+	return stack;
+}
+int main() {
+	system("title");
+	int inter;
+	lineStack * stack = NULL;
+	for (int i = 0; i <= size; i++)
+	{
+		printf("the num of %d: ", i+1);
+		scanf_s("%d",&inter);
+		stack = push(stack, inter);
+	}
+	
+	/*stack = push(stack, 2);
+	stack = push(stack, 3);
+	stack = push(stack, 4);*/
+	for (int i = 0; i <= size; i++)
+	{
+		stack = pop(stack);
+	}
+	
+	/*stack = pop(stack);
+	stack = pop(stack);
+	stack = pop(stack);
+	stack = pop(stack);*/
+	system("pause");
+	return 0;
+}
